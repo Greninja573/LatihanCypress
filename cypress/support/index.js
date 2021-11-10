@@ -18,3 +18,8 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+// Ignore XHR Error
+Cypress.Server.defaults({
+    ignore:(xhr) => bool
+})

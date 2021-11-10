@@ -11,7 +11,8 @@ describe('Test Contact US from WebDriver Uni' , () => {
         cy.get('[name="email"]').type("test@test.com")
         cy.get('textarea.feedback-input').type("This is a test on Cypress")
         cy.get('[type="submit"]').click()
-        cy.contains('h1','Thank You for your Message!')
+        // cy.contains('h1','Thank You for your Message!')
+        cy.get('h1').should('have.text','Thank You for your Message!')
     });
     it("should be able to reset a submission via contact us form",()=>{
         cy.viewport(1366,768)
@@ -21,6 +22,12 @@ describe('Test Contact US from WebDriver Uni' , () => {
         cy.get('[name="email"]').type("test@test.com")
         cy.get('textarea.feedback-input').type("This is a test on Cypress")
         cy.get('[type="reset"]').click()
+        cy.get('[name="first_name"]').should('not.have.value','John')
+        cy.get('[name="last_name"]').should('not.have.value','Doe')
+        cy.get('[name="email"]').should('not.have.value','test@test.com')
+        cy.get('textarea.feedback-input').should('not.have.value','This is a test on Cypress')
+
+
     });
     it("should not be able to submit a successful submission via contact us form as all fields are required",()=>{
         cy.viewport(1366,768)
