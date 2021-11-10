@@ -30,4 +30,13 @@ describe('Test Contact US from WebDriver Uni' , () => {
         cy.get('[type="submit"]').click()
         cy.contains('Error: all fields are required')
     });
+    // To run only one test
+    // it.only("should not be able to submit a successful submission via contact us form as all fields are required",()=>{
+    //     cy.viewport(1366,768)
+    //     cy.visit("http://webdriveruniversity.com/Contact-Us/contactus.html")
+    //     cy.get('[name="first_name"]').type("John")
+    //     cy.get('[name="last_name"]').type("Doe")
+    //     cy.get('[type="submit"]').click()
+    //     cy.contains('Error: all fields are required')
+    // });
 });
