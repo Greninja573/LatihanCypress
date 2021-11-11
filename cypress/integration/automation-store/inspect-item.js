@@ -6,10 +6,12 @@ define("Inspect the Automation Test Store using Chain of Commands",()=>{
         cy.visit("http://automationteststore.com/")
         cy.get('#block_frame_featured_1769 > .thumbnails > :nth-child(1) > .fixed_wrapper > .fixed > .prdocutname').click()
     })
-    it("Click on the first item using item text", () => {
+    it.only("Click on the first item using item text", () => {
         cy.viewport(1366,768)
         cy.visit("http://automationteststore.com/")
-        cy.get('.prdocutname').contains('Skinsheen Bronzer Stick').click()
+        cy.get('.prdocutname').contains('Skinsheen Bronzer Stick').click().then(function(itemHeaderText){
+            cy.log("Selected Item: " + itemHeaderText.text())   
+        })
     })
     it("Click on the first item using index", () => {
         cy.viewport(1366,768)
