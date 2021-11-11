@@ -16,5 +16,7 @@ define("Test Contact US From Automation Store",()=>{
         cy.get("button[title='Submit']").click()
         // Use Assertion from Chai
         cy.get('.mb40 > :nth-child(3)').should('have.text','Your enquiry has been successfully sent to the store owner!')
+        // Cypress Log
+        cy.log('Test has been completed')
     })
 });
