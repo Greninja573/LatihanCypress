@@ -38,4 +38,22 @@ define("Verify Variables, Cypress Commands and JQuery Commands",()=>{
             expect(headerText).is.eq('Makeup')
         })
     })
+    it.only("Validate Properties of Contact US Page", () => {
+        cy.viewport(1366,768)
+        cy.visit("https://automationteststore.com/index.php?rt=content/contact")
+
+        // Uses Cypress Commands and Chaining
+        cy.contains('#ContactUsFrm', 'Contact Us Form').find('#field_11').should('contain','First name')
+        // Uses JQuery Command
+        cy.contains('#ContactUsFrm', 'Contact Us Form').then(text => {
+            const firstnameText = text.find('#field_11').text();
+            expect(firstnameText).to.contain('First name');
+            
+            //  Uses Embedded Commands (Closure)
+            cy.get('#field_11').then(fnText => {
+                cy.log(fnText.text())
+                cy.log(fnText)
+            })
+        })
+    })
 });
