@@ -6,7 +6,9 @@ define("Test Contact US From Automation Store",()=>{
         cy.visit("http://automationteststore.com/")
         // cy.get('.info_links_footer > :nth-child(5) > a').click()
         // If Programmer change the location
-        cy.get("a[href$='contact']").click()
+        cy.get("a[href$='contact']").click().then(function(buttonContactName){
+            cy.log("Clicked: " + buttonContactName.text())
+        })
         // cy.contains('CONTACT US')
         cy.get('#ContactUsFrm_first_name').type('John')
         cy.get('#ContactUsFrm_email').type('test@test.com')
