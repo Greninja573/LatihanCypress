@@ -1,4 +1,4 @@
 {
     "chromeWebSecurity": false, 
-    "pageLoadTimeout": 25000
+    "pageLoadTimeout": 50000
 }
