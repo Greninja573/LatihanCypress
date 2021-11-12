@@ -3,9 +3,12 @@
 describe('Test Contact US from WebDriver Uni' , () => {
     it("should be able to submit a successful submission via contact us form",()=>{
         cy.viewport(1366,768)
-        cy.visit("http://webdriveruniversity.com/Contact-Us/contactus.html")
+        // cy.visit("http://webdriveruniversity.com/Contact-Us/contactus.html")
+        cy.visit("http://webdriveruniversity.com")
         // Check if the page contains utf-8 characters
         cy.document().should('have.property', 'charset').and('eq', 'UTF-8')
+        // Remove target: _blank for prevent open in new tab
+        cy.get('#contact-us').invoke('removeAttr','target').click({force:true})
         // Check if the title is WebDriver | Contact Us
         cy.title().should('include','WebDriver | Contact Us')
         // Check if the url is contact us
@@ -20,8 +23,10 @@ describe('Test Contact US from WebDriver Uni' , () => {
     });
     it("should be able to reset a submission via contact us form",()=>{
         cy.viewport(1366,768)
-        cy.visit("http://webdriveruniversity.com/Contact-Us/contactus.html")
+        // cy.visit("http://webdriveruniversity.com/Contact-Us/contactus.html")
+        cy.visit("http://webdriveruniversity.com")
         cy.document().should('have.property', 'charset').and('eq', 'UTF-8')
+        cy.get('#contact-us').invoke('removeAttr','target').click({force:true})
         cy.title().should('include','WebDriver | Contact Us')
         cy.url().should('include','contactus')
         cy.get('[name="first_name"]').type("John")
@@ -36,8 +41,10 @@ describe('Test Contact US from WebDriver Uni' , () => {
     });
     it("should not be able to submit a successful submission via contact us form as all fields are required",()=>{
         cy.viewport(1366,768)
-        cy.visit("http://webdriveruniversity.com/Contact-Us/contactus.html")
+        // cy.visit("http://webdriveruniversity.com/Contact-Us/contactus.html")
+        cy.visit("http://webdriveruniversity.com")
         cy.document().should('have.property', 'charset').and('eq', 'UTF-8')
+        cy.get('#contact-us').invoke('removeAttr','target').click({force:true})
         cy.title().should('include','WebDriver | Contact Us')
         cy.url().should('include','contactus')
         cy.get('[name="first_name"]').type("John")
