@@ -4,7 +4,7 @@ Install Cypress via NPM
 
 `npm install`
 
-## All test case must placed on cypress/integration folder
+**All test case must placed on cypress/integration folder**
 
 To run Cypress with Cypress UI
 `node_modules/.bin/cypress open`
